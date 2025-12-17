@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+  --champagne-gold: #D4AF37;
+  --champagne-gold-light: #F5E6D3;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'DM Sans', sans-serif;
+}
+
+body {
+  color: rgb(var(--foreground));
+  background: var(--background);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8941F;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+/* Custom champagne gold shadows */
+@layer utilities {
+  .shadow-champagne {
+    box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.3), 0 4px 6px -2px rgba(212, 175, 55, 0.2);
+  }
+  
+  .shadow-champagne-lg {
+    box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.4), 0 8px 12px -4px rgba(212, 175, 55, 0.3);
+  }
+  
+  .shadow-champagne-xl {
+    box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.5), 0 10px 16px -6px rgba(212, 175, 55, 0.4);
+  }
+}
+
+/* Glass-morphism effect */
+@layer components {
+  .glass-morphism {
+    background: rgba(26, 26, 26, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 
+      0 8px 32px 0 rgba(0, 0, 0, 0.37),
+      0 0 0 1px rgba(212, 175, 55, 0.1) inset,
+      0 0 20px rgba(212, 175, 55, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-morphism:hover {
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow:
+      0 12px 40px 0 rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(212, 175, 55, 0.15) inset,
+      0 0 30px rgba(212, 175, 55, 0.15);
+  }
+}
+
+/* ============================================
+   HERO SECTION PREMIUM STYLES
+   ============================================ */
+
+/* Hero Typography */
+.hero-text-primary {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--champagne-gold);
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(212, 175, 55, 0.15);
+  line-height: 1.1;
+}
+
+.hero-text-secondary {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  line-height: 1.2;
+}
+
+.hero-text-accent {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 300;
+  color: var(--champagne-gold);
+  opacity: 0.7;
+}
+
+/* Hero Entrance Animations - GPU accelerated */
+@keyframes heroFadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroLineExpand {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes kenBurns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Staggered animation classes - using animation-delay with visible default */
+.hero-animate-1,
+.hero-animate-2,
+.hero-animate-3,
+.hero-animate-4,
+.hero-animate-5 {
+  animation-name: heroFadeSlideUp;
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-fill-mode: both;
+}
+
+.hero-animate-1 { animation-delay: 0.2s; }
+.hero-animate-2 { animation-delay: 0.4s; }
+.hero-animate-3 { animation-delay: 0.6s; }
+.hero-animate-4 { animation-delay: 0.8s; }
+.hero-animate-5 { animation-delay: 1s; }
+
+.hero-line-animate {
+  transform-origin: center;
+  animation: heroLineExpand 1s ease-out 0.8s both;
+}
+
+.hero-ken-burns {
+  animation: kenBurns 15s ease-out forwards;
+}
+
+.animate-scroll-line {
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero-ken-burns,
+  .hero-animate-1,
+  .hero-animate-2,
+  .hero-animate-3,
+  .hero-animate-4,
+  .hero-animate-5,
+  .hero-line-animate,
+  .animate-scroll-line {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
